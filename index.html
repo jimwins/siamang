@@ -18,12 +18,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Siamang</a>
+            <a class="navbar-brand" href="./">Siamang</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="active"><a href="./">Home</a></li>
+              <li><a data-toggle="modal" data-target="#about">About</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -46,6 +46,31 @@
              data-bind="visible: !results().length">
           <h1>Welcome to Siamang</h1>
           <p>This is a web-based command-line client for MySQL.</p>
+          <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#about">Learn more</a></p>
+        </div>
+
+        <div id="about" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">About Siamang</h4>
+              </div>
+              <div class="modal-body">
+                <p><strong>Siamang</strong> is a web-based command-line client for MySQL.</p>
+                <p>Usage is simple: enter an SQL command in the command-line and results will be displayed.<p>
+                <p>Note that <strong>Siamang</strong> does not use a persistent connection to the database server, so you cannot set variables or create temporary tables to access in subsequent commands, nor can you utilize transactions.</p>
+                <p>The siamang (<i>Symphalangus syndactylus</i>) is a tailless, arboreal, black-furred gibbon native to the forest of Malaysia, Thailand, and Sumatra. (<cite><a href="https://en.wikipedia.org/wiki/Siamang">Wikipedia</a></cite>)</p>
+                <p><strong>Siamang</strong> is free to use, but if you find it useful, I encourage you to make a donation to the <a href="http://www.panda.org/">World Wildlife Fund</a>.</p>
+                <p>Copyright &copy; 2013 Jim Winstead Jr. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+              </div>
+              <div class="modal-footer">
+                <a href="http://www.panda.org/"><button type="button" class="btn">Donate</button></a>
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div data-bind="foreach: results">

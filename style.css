@@ -26,3 +26,14 @@ body {
 #wrap > .container {
     padding: 60px 15px 0;
 }
+
+#intro {
+  background-color: #B8AC94; /* 184 172 148  */
+  background-image: url(siamang-wide.jpg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  color: #000;
+}
+#intro h1 {
+  text-shadow: 2px 2px 6px #fff;
+}
