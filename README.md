@@ -12,6 +12,9 @@ Siamang includes the jQuery Javascript library:
 Siamang includes the Knockout JavaScript MVVM library:
   http://knockoutjs.com/
 
+Siamang includes the knockout.localStorage plugin:
+  https://github.com/jimrhoskins/knockout.localStorage
+
 Siamang photo by Nikita, licensed CC BY 2.0:
   http://www.flickr.com/photos/malfet/5360240557/
 
