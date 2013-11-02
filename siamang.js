@@ -4,10 +4,20 @@ var systemModel= function() {
   self.prompt= ko.observable('\\U:\\d mysql>');
   self.cmd= ko.observable('');
 
-  self.user= ko.observable('');
-  self.password= ko.observable('');
-  self.database= ko.observable('');
+  self.user= ko.observable(localStorage.getItem('user'));
+  self.password= ko.observable(localStorage.getItem('password'));
+  self.database= ko.observable(localStorage.getItem('database'));
   self.host= ko.observable('localhost');
+
+  self.user.subscribe(function(newValue) {
+    localStorage.setItem('user', newValue);
+  });
+  self.password.subscribe(function(newValue) {
+    localStorage.setItem('password', newValue);
+  });
+  self.database.subscribe(function(newValue) {
+    localStorage.setItem('database', newValue);
+  });
 
   self.results= ko.observableArray();
 
