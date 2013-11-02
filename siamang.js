@@ -21,3 +21,23 @@ var systemModel= function() {
 };
 
 ko.applyBindings(new systemModel());
+
+$.getFocusedElement = function() {
+  var elem = document.activeElement;
+  return $( elem && ( elem.type || elem.href ) ? elem : [] );
+};
+
+$(function() {
+  $(document).keydown(function(ev) {
+    if (ev.keyCode == 16 || ev.keyCode == 17
+        || ev.keyCode == 18 || ev.keyCode == 91
+        || ev.metaKey || ev.altKey || ev.ctrlKey) {
+      return true;
+    }
+    var el = $.getFocusedElement();
+    if (!el.length) {
+      var inp= $('.autofocus', this);
+      inp.focus();
+    }
+  });
+});
