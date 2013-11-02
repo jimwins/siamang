@@ -3,9 +3,14 @@
 
 $cmd= $_REQUEST['cmd'];
 
+$user= $_REQUEST['user'];
+$password= $_REQUEST['password'];
+$database= $_REQUEST['database'];
+
 $db= new mysqli();
-if (!$db->real_connect("localhost","","",""))
-  die_jsonp("Connect failed: " . mysqli_connect_error());
+if (!@$db->real_connect("localhost", $user, $password, $database))
+  die_jsonp(array('error' => "Connect failed",
+                  'explain' => mysqli_connect_error()));
 
 $db->set_charset('utf8');
 
