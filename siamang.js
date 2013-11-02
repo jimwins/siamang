@@ -13,8 +13,8 @@ var systemModel= function() {
 
   self.displayprompt= ko.computed(function() {
     var prompt= self.prompt().replace(/\\h/g, self.host())
-                             .replace(/\\u/g, self.user())
-                             .replace(/\\d/g, self.database())
+                             .replace(/\\u/g, self.user() || '(none)')
+                             .replace(/\\d/g, self.database() || '(none)')
                              .replace(/\\U/g,
                                       self.user() + '@' + self.host());
     return prompt;
