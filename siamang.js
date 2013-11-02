@@ -43,7 +43,6 @@ var systemModel= function() {
 
     case 'use':
       var database= cmd.substring(space + 1);
-      if (!database) break;
       this.database(database);
       break;
 
