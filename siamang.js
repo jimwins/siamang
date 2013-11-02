@@ -72,6 +72,10 @@ var systemModel= function() {
       scrollTop: $(document).height() - $(window).height()
     });
   };
+
+  self.hideSettings= function() {
+    $('#settings').modal('hide');
+  };
 };
 
 ko.applyBindings(new systemModel());
