@@ -11,6 +11,9 @@ var systemModel= function() {
 
   self.results= ko.observableArray();
 
+  self.history= ko.observableArray([], { persist: 'history' });
+  self.history_pos= self.history().length;
+
   self.displayprompt= ko.computed(function() {
     var prompt= self.prompt().replace(/\\h/g, self.host())
                              .replace(/\\u/g, self.user() || '(none)')
@@ -61,10 +64,30 @@ var systemModel= function() {
     $("html, body").animate({
       scrollTop: $(document).height() - $(window).height()
     });
+    self.history.push(self.cmd());
+    self.history_pos= self.history().length;
+    self.cmd('');
   };
 
   self.hideSettings= function() {
     $('#settings').modal('hide');
+  };
+
+  self.historyChange= function(data, ev) {
+    if (ev.which != 38 && ev.which != 40)
+      return true;
+
+    if (ev.which == 38) {
+      if (self.history_pos == 0)
+        return true;
+      self.history_pos-= 1;
+    } else {
+      if (self.history_pos == self.history().length)
+        return true;
+      self.history_pos+= 1;
+    }
+
+    self.cmd(self.history()[self.history_pos]);
   };
 };
 
