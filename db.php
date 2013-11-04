@@ -22,6 +22,7 @@ $r= $db->query($cmd)
 $result= array(
   'cmd' => $cmd,
   'num_rows' => $r->num_rows,
+  'affected_rows' => $db->affected_rows,
   'fields' => array(),
   'rows' => array(),
 );
@@ -30,8 +31,10 @@ for ($i= 0; $i < $r->field_count; $i++) {
   $result['fields'][]= array('name' => $r->fetch_field_direct($i)->name);
 }
 
-while ($row= $r->fetch_row()) {
-  $result['rows'][]= $row;
+if ($r->num_rows) {
+  while ($row= $r->fetch_row()) {
+    $result['rows'][]= $row;
+  }
 }
 
 echo jsonp($result);
