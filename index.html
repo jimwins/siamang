@@ -125,7 +125,19 @@
                 </tr>
               </tbody>
             </table>
-            <div class="alert alert-success"><span data-bind="text: num_rows"></span> rows in set</div>
+            <div class="alert alert-success">
+              <div data-bind="if: num_rows !== null">
+                <div data-bind="if: num_rows">
+                  <span data-bind="text: num_rows"></span> rows in set
+                </div>
+                <div data-bind="ifnot: num_rows">
+                  Empty set.
+                </div>
+              </div>
+              <div data-bind="ifnot: num_rows !== null">
+                Query OK, <span data-bind="text: affected_rows"></span> rows affected
+              </div>
+            </div>
           </div>
         </div>
       </div>
